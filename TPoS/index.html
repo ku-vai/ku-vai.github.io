@@ -1,0 +1,519 @@
+<!-- ---
+layout: home
+# articles:
+#   excerpt_type: html
+--- -->
+
+<html lang="en">
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>The Power of Sound (TPoS) </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="The Power of Sound (TPoS): Audio Reactive Video Generation with Stable Diffusion">
+    <meta name="author" content="....">
+    <link rel="stylesheet" href="stylesheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/x-mathjax-config">
+
+        MathJax.Hub.Config({
+        
+          tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        
+        });
+        
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+</head>
+<body>
+<div class="title">
+    <h1><strong><span style="color:#5f27cd;">T</span></strong>he <strong><span style="color:#5f27cd;">P</span></strong>ower <strong><span style="color:#5f27cd;">o</span></strong>f <strong><span style="color:#5f27cd;">S</span></strong>ound (<em><span style="color:#5f27cd;">TPoS</span></em>): <br> Audio Reactive Video Generation with Stable Diffusion</h1>
+  <br>
+    <center>
+        <h2>2023</h2>
+    </center>
+  <div class="code">
+        <center>
+<!--     <right> -->
+        <a class="paper-btn" href="">
+            <span class="material-icons"> code </span>
+            Code
+
+        <a class="paper-btn" href="">
+            <span class="material-icons"> description </span>
+            Paper
+        </a>
+        </center>
+          
+    </div>
+</div>
+<div class="byline">
+    <div class="authors">
+        <center>
+          <div class="author"><sup> <h2>Anonymous&nbsp;</</sup></div>
+<!--             <div class="author"><sup> <h2>Ano&nbsp;Lee</a><sup>1</sup> &emsp; Gyeongrok&nbsp;Oh</a><sup>1</sup> &emsp; Wonmin&nbsp;Byeon</a><sup>2</sup> &emsp; Chanyoung&nbsp;Kim</a><sup>1</sup> &emsp;Won Jeong&nbsp;Ryoo</a><sup>1</sup> &emsp;Hyunjun&nbsp;Cho</a><sup>1</sup> &emsp;Sang Ho&nbsp;Yoon</a><sup>3</sup> &emsp; Jihyun&nbsp;Bae</a><sup>1</sup>&emsp; Jinkyu&nbsp;Kim</a><sup>1*</sup>&emsp; Sangpil&nbsp;Kim</a><sup>1*</sup></h2></sup></div> -->
+        </center>
+    </div>
+    <div class="affiliations">
+        <center>
+          <p class="affiliation"><sup> </sup><h3>Anonymous Institution</h3></p>
+<!--             <p class="affiliation"><sup> </sup><h3>Korea University<sup>1</sup> &emsp; NVIDIA Research<sup>2</sup>&emsp; KAIST<sup>3</sup></h3></p> -->
+        </center>
+    </div>
+<!--     <div class="code">
+        <center>
+        <a class="paper-btn" href="">
+            <span class="material-icons"> code </span>
+            Code
+
+        <a class="paper-btn" href="">
+            <span class="material-icons"> description </span>
+            Paper
+        </a>
+        </center>
+    </div> -->
+</div>
+
+<div class="container">
+    <div class="center-img">
+      <figure>
+        <img class="content"  width="100%" height="100%" src="./assets/main3-1.png">
+        <figcaption style="text-align: center;"> <br> Figure 1 </figcaption>
+      </figure>
+    </div>
+    <div class="sections-container">
+      <div class="section">
+<!--             <h2 class="section-title">Main</h2> -->
+<!--             <div class="center-img">
+                <img class="content" width="100%" height="100%" src="./image/train.png"/>
+                         <div class="center-img">
+
+            </div> -->
+            <p>
+              <br>
+                Figure 1. The Power of Sound (TPoS) is a novel framework that generates audio-reactive video sequences. Built upon the Stable Diffusion model, our model first generates an initial frame from a user-provided text prompt (e.g. "a photo of a beautiful beach with a blue sky"), then reactively manipulates the style of generated images corresponding to the sound inputs (e.g. an audio sequence of fireplace). Our model is indeed able to generate a frame conditioned on semantic information of the sound (see 1st and 2nd rows where images are manipulated driven by sound inputs such as fireplace or wave sound), while realistically dealing with temporal visual changes conditioned on changes of sound, e.g., increasing magnitude of sounds (see second row) or wave $\rightarrow$ fireplace (see last row). TPoS creates visually compelling and contextually relevant video sequences in an open domain. 
+            </p>
+          <div class="center-img">
+<!--           <video class="content" width="80%" height="80%" src="/assets/7327_video.mp4" controls="controls"></video> -->
+            <video class="content" width="80%" height="80%" src="./assets/TPoS_nomark_low.mp4" controls="controls"></video>
+          </div>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Abstract</h2>
+            <p>
+                In recent years, video generation has become a prominent generative tool and has drawn significant attention. However, there is little consideration in audio-to-video generation, though audio contains unique qualities like temporal semantics and magnitude. Hence, we propose The Power of Sound (TPoS) model to incorporate audio input that includes both changeable temporal semantics and magnitude. To generate video frames, TPoS utilizes a latent stable diffusion model with textual semantic information, which is then guided by the sequential audio embedding from our pretrained Audio Encoder. As a result, this method produces audio reactive video contents. We demonstrate the effectiveness of TPoS across various tasks and compare its results with current state-of-the-art techniques in the field of audio-to-video generation. 
+            </p>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Method</h2>
+            <p></p>
+            <h2>Inference</h2>
+            <div class="center-img">
+              <figure>
+                <img class="content" width="100%" height="100%" src="./assets/overview-1.png"/>
+              <figcaption style="text-align: center;"> <br> Figure 3 </figcaption>
+                </figure>
+            </div>
+            <p style="margin-top: 30px">
+                 <br> Figure 3. An overview of our proposed TPoS model. Our model consists of two main modules: (i) Audio Encoder, which produces a sequence of latent vectors, encoding temporal semantics of audio input by utilizing CLIP space and highlighting the important temporal features and (ii) Audio Semantic Guidance Module, which is based on the diffusion process, generating video frames that are temporally consistent and audio-reactive.
+            </p>
+            <h2>Train</h2>
+            <div class="center-img">
+                <figure>
+                    <img class="content" width="100%" height="90%" src="./assets/audio_encoder-1.png" controls="controls"></img>
+                    <figcaption style="text-align: center;"> Figure 4 </figcaption>
+                </figure>
+                
+                <figure>
+                  <br><br><br>
+                    <img class="content" width="100%" height="45%" src="./assets/tam2-1.png" controls="controls"></img>
+                    <figcaption style="text-align: center;"> Figure 5 </figcaption>
+                </figure>
+            </div>
+            <p style="margin-top: 30px">
+              <p>
+                Figure 4. An overview of our Audio Encoder training process. Our model generates temporally-encoded audio embeddings with an LSTM layer and Temporal Attention Module (TAM). Audio input is partitioned into $N$ segments, and each of these is encoded and used as a condition to manipulate audio-reactive video sequences (e.g. light rain $\rightarrow$ heavy rain). This is done by our Mapping Module (MAP), which maps the audio embedding to the latent space of Stable Diffusion.
+              </p>
+              <p>
+                Figure 5. Details of our Temporal Attention Module (TAM). Temporal Attention Module effectively captures the important audio segments (e.g. harsh raining sound) as attention weights, which are guided by CLIP's text embedding (e.g. "raining") in training phase and express the magnitude of audio in test phase.
+              </p>
+            </p>
+        </div>
+
+        <!-- <div class="section">
+            <h2 class="section-title">Supplementary Video</h2>
+            <div class="center-img">
+                <figure>
+                    
+                </figure>
+            </div>
+        </div> -->
+        <div class="section">
+            <h2 class="section-title">Generation Results</h2>
+<!--             <p></p> -->
+         <!--     <h2> Semantic Change </h2> -->
+<!--             <div class="center-img">
+               <figure>
+                    <img class="content" width="80%" height="80%" src="/assets/00000.png" controls="controls"></img>
+                    <figcaption style="text-align: center;"> Original Image  <br> <font size= "2">Prompt: A photo of a beatiful beach with blue sky.</font></figcaption>
+                </figure>
+                <figure>
+                    <video class="content"width="80%" height="80%" src="/assets/new_main_fire.mp4" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊 Fire Crackling </figcaption>
+                </figure>
+                
+                <figure>
+                    <video class="content" width="80%" height="80%" src="/assets/new_main_water.mp4" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊 Wave </figcaption>
+                </figure>
+          </div> -->
+          
+            <div class="center-img">
+              <figure>
+                <br>
+                    <img class="content" width="100%" height="80%" src="./assets/00021.png" controls="controls" style="display: block;"></img>
+                    <figcaption style="text-align: center;"><br><font size= "2"> Prompt: A photo of beautiful park with sky </font></figcaption>
+                </figure>
+              
+                <figure>
+                    <video class="content" width="90%" height="90%" src="./assets/new_rain_bird_50.mp4" controls="controls" style="display: block;"></video>
+                    <figcaption style="text-align: center;">🔊 rain $\rightarrow$ bird singing (sunny day)  </figcaption>
+                </figure>
+                
+                <figure>
+                    <video class="content" width="90%" height="90%" src="./assets/new_thunderstorm_bird.mp4" controls="controls" style="display: block;"></video>
+                    <figcaption style="text-align: center;">  🔊 Thunderstorm $\rightarrow$ bird singing (sunny day) </figcaption>
+                </figure>
+            </div>
+
+<!--           <p>🔊 Squishing water</p> -->
+         <div class="center-img">
+                          <figure>
+                            <br>
+                    <img class="content" width="100%" height="70%" src="./assets/thunder.png" controls="controls" style="display: block;"></img>
+                    <figcaption style="text-align: center;"><br><font size= "2"> Prompt: A photo of landscape with sky </font></figcaption>
+                </figure>
+              <figure>
+                    <video class="content" width="100%" height="100%" src="./assets/new_thunder_sky.mp4" controls="controls" style="display: block;"></video>
+                    <figcaption style="text-align: center;"> 🔊 Thunder </figcaption>
+                </figure>
+            
+              <figure>
+                <br>
+                    <img class="content" width="100%" height="70%" src="./assets/thunder2.png" controls="controls" style="display: block;"></img>
+                    <figcaption style="text-align: center;"><br><font size= "2"> Prompt: A photo of landscape with sky </font></figcaption>
+                </figure>
+              
+                <figure>
+                    <video class="content" width="100%" height="100%" src="./assets/new_thunder_video3.mp4" controls="controls" style="display: block;"></video>
+                    <figcaption style="text-align: center;"> 🔊 Thunder </figcaption>
+                </figure>
+             
+            </div>
+          <div class="center-img">
+              <figure>
+                <br><br>
+                    <img class="content" width="100%" height="65%" src="./assets/render.png" controls="controls" style="display: block;"></img>
+                    <figcaption style="text-align: center;"><br><font size= "2"> Prompt: A 3 d render of a garden, with a dreamy ultra wide shot </font></figcaption>
+                </figure>
+               <figure>
+                    <video class="content" width="100%" height="100%" src="./assets/new_render_video.mp4" controls="controls" style="display: block;"></video>
+                 <figcaption style="text-align: center;">🔊 fire crackling </figcaption>
+                </figure>
+              <figure>
+                <br><br>
+                    <img class="content" width="100%" height="65%" src="./assets/forest2.png" controls="controls" style="display: block;"></img>
+                    <figcaption style="text-align: center;"><br><font size= "2"> Prompt: A photo of beautiful garden with sky </font></figcaption>
+                </figure>
+               <figure>
+                    <video class="content" width="100%" height="100%" src="./assets/new_forest_video2.mp4" controls="controls" style="display: block;"></video>
+                 <figcaption style="text-align: center;">🔊 fire crackling  </figcaption>
+                </figure>
+             
+            </div>
+          <div class="center-img">
+              <figure>
+                <br><br>
+                    <img class="content" width="100%" height="65%" src="./assets/garden.png" controls="controls" style="display: block;"></img>
+                    <figcaption style="text-align: center;"><br><font size= "2"> Prompt: A photo of beautiful garden with sky </font></figcaption>
+                </figure>
+               <figure>
+                    <video class="content" width="100%" height="100%" src="./assets/new_garden_video2.mp4" controls="controls" style="display: block;"></video>
+                 <figcaption style="text-align: center;">🔊 Squishing water  </figcaption>
+                </figure>
+              <figure>
+                <br><br>
+                    <img class="content" width="100%" height="65%" src="./assets/fountain.png" controls="controls" style="display: block;"></img>
+                    <figcaption style="text-align: center;"><br><font size= "2"> Prompt: A fountain in the garden </font></figcaption>
+                </figure>
+               <figure>
+                    <video class="content" width="100%" height="100%" src="./assets/new_fountain_video.mp4" controls="controls" style="display: block;"></video>
+                 <figcaption style="text-align: center;">🔊 Squishing water  </figcaption>
+                </figure>
+             
+            </div>
+            
+<!--             <h2> Same Sound and Same Input </h2> -->
+<!--             <p> 🔊 Thunder </p> -->
+            <h2> Face Example </h2>
+            Prompt: A photo of the face of a woman/man
+            <div class="center-img">
+                          <figure>
+                              <video class="content" width="100%" height="100%" src="./assets/new_sobbing.mp4" controls="controls"></video>
+                              <figcaption style="text-align: center;"> 🔊 sobbing </figcaption>
+                          </figure>
+              <figure>
+                              <video class="content" width="100%" height="100%" src="./assets/new_face_video.mp4" controls="controls"></video>
+                              <figcaption style="text-align: center;">🔊 giggling </figcaption>
+              </figure>
+                          <figure>
+                              <video class="content" width="100%" height="100%" src="./assets/new_giggling.mp4" controls="controls"></video>
+                              <figcaption style="text-align: center;">🔊 giggling </figcaption>
+              </figure>
+              <figure>
+                              <video class="content" width="100%" height="100%" src="./assets/new_man_giggling.mp4" controls="controls"></video>
+                              <figcaption style="text-align: center;">🔊 giggling </figcaption>
+              </figure>
+
+                      </div>
+  
+          <h2> Comparison </h2>
+          <div class="Comparison" style="margin-left: 35;">
+             <table width=1200px>
+                    <center>
+                    <tbody><tr>
+                        <td width=20px align=center style="writing-mode: tb-rl;padding-right: 0px;font-size: 20px;">
+                        </td>
+                        <td width="256px">
+                       <font size= "2">Prompt: A photo of deep in the sea  </font>
+                            </figure>
+                        </td>
+                        <td width="256px">
+              
+<font size= "2"> Prompt: A photo of firewood in the forest </font>
+           
+                        </td>
+                        <td width="256px">
+                           <font size= "2"> Prompt: A photo of volcano </font>
+
+                        </td>
+                        </tr>
+                </table>
+                    <table width=1200px>
+                    <center>
+                    <tbody><tr>
+                        <td width=20px align=center style="writing-mode: tb-rl;padding-right: 0px;font-size: 20px;">
+                            Ours (Prompt)
+                        </td>
+                        <td width="256px">
+                            <img class="content" width="70%" height="70%" src="./assets/bubbling.png" controls="controls"></img>
+                        </td>
+                        <td width="256px">
+                            <img class="content" width="70%" height="70%" src="./assets/firewood.png" controls="controls"></img>
+                        </td>
+                        <td width="256px">
+                    <img class="content" width="70%" height="70%" src="./assets/volcano2.png" controls="controls"></img>
+                        </td>
+                        </tr>
+                </table>
+            <table width=1200px>
+                    <center>
+                    <tbody><tr>
+                        <td width=20px align=center style="writing-mode: tb-rl;padding-right: 0px;font-size: 20px;">
+                        </td>
+                        <td width="256px">
+                  &nbsp;&nbsp; 🔊 underwater bubbling
+                        </td>
+                        <td width="256px">
+       &nbsp;&nbsp;&nbsp;&nbsp;🔊 fire crackling
+                        </td>
+                        <td width="256px">
+                         &nbsp;&nbsp;&nbsp;&nbsp;  🔊 explosion
+                        </td>
+                        </tr>
+                </table>
+                        <table width=1200px>
+                    <center>
+                    <tbody><tr>
+                        <td width=20px align=center style="writing-mode: tb-rl;padding-right: 0px;font-size: 20px;">
+                            Ours
+                        </td>
+                        <td width="256px">
+                            <video class="content" width="70%" height="70%" src="./assets/new_final_bubbling.mp4" controls="controls"></video>
+                        </td>
+                        <td width="256px">
+                            <video class="content" width="70%" height="70%" src="./assets/new_fire_video.mp4" controls="controls"></video>
+                        </td>
+                        <td width="256px">
+                    <video class="content" width="70%" height="70%" src="./assets/new_final_explosion.mp4" controls="controls"></video>
+                        </td>
+                        </tr>
+                </table>
+           
+<!--               <table width=1200px>
+                    <center>
+                    <tbody><tr>
+                        <td width=20px align=center style="writing-mode: tb-rl;padding-right: 0px;font-size: 20px;">
+                        </td>
+                        <td width="256px">
+                  &nbsp;&nbsp; 🔊 underwater bubbling
+                        </td>
+                        <td width="256px">
+       &nbsp;&nbsp;&nbsp;&nbsp;🔊 fire crackling
+                        </td>
+                        <td width="256px">
+                         &nbsp;&nbsp;&nbsp;&nbsp;  🔊 explosion
+                        </td>
+                        </tr>
+                </table> -->
+         
+            <table width=1200px>
+                    <center>
+                    <tbody><tr>
+                        <td width=20px align=center style="writing-mode: tb-rl;padding-right: 0px;font-size: 20px;">
+                           Sound2Sight
+                        </td>
+                        <td width="256px">
+                    
+                    <video class="content" width="70%" height="70%" src="./assets/sound2sight_underwater.mp4" controls="controls"></video>
+             
+                        </td>
+                        <td width="256px">
+    
+                    <video class="content" width="70%" height="70%" src="./assets/sound2sight_fire.mp4" controls="controls"></video>
+             
+                        </td>
+                        <td width="256px">
+        
+                    <video class="content" width="70%" height="70%" src="./assets/sound2sight_explosion.mp4" controls="controls"></video>
+
+                        </td>
+                        </tr>
+                </table>
+                <table width=1200px>
+                    <center>
+                    <tbody><tr>
+                        <td width=20px align=center style="writing-mode: tb-rl;padding-right: 0px;font-size: 20px;">
+                            CCVS
+                        </td>
+                        <td width="256px">
+   
+                    <video class="content" width="70%" height="70%" src="./assets/vid_00074.mp4" controls="controls"></video>
+
+                        </td>
+                        <td width="256px">
+
+                    <video class="content" width="70%" height="70%" src="./assets/vid_00071.mp4" controls="controls"></video>
+    
+                        </td>
+                        <td width="256px">
+
+                    <video class="content" width="70%" height="70%" src="./assets/vid_00069.mp4" controls="controls"></video>
+
+                        </td>
+                        </tr>
+                </table>
+            <table width=1200px>
+                    <center>
+                    <tbody><tr>
+                        <td width=20px align=center style="writing-mode: tb-rl;padding-right: 0px;font-size: 20px;">
+                            TraumerAI
+                        </td>
+                        <td width="256px">
+                   
+                    <video class="content" width="70%" height="70%" src="./assets/underwater bubbling_406_A20.mp4" controls="controls"></video>
+                    
+                        </td>
+                        <td width="256px">
+                      
+                    <video class="content" width="70%" height="70%" src="./assets/fire crackling_134_A20.mp4" controls="controls"></video>
+             
+                        </td>
+                        <td width="256px">
+          
+                    <video class="content" width="70%" height="70%" src="./assets/explosion_A20.mp4" controls="controls"></video>
+   
+                        </td>
+                        </tr>
+                </table>
+             
+            <table width=1200px>
+                    <center>
+                    <tbody><tr>
+                        <td width=20px align=center style="writing-mode: tb-rl;padding-right: 0px;font-size: 20px;">
+                           Lee et al
+                        </td>
+                        <td width="256px">
+                    
+                    <video class="content" width="70%" height="70%" src="./assets/eccv_bubble.mp4" controls="controls"></video>
+             
+                        </td>
+                        <td width="256px">
+    
+                    <video class="content" width="70%" height="70%" src="./assets/eccv_fire.mp4" controls="controls"></video>
+             
+                        </td>
+                        <td width="256px">
+        
+                    <video class="content" width="70%" height="70%" src="./assets/eccv_explosion.mp4" controls="controls"></video>
+
+                        </td>
+                        </tr>
+                </table>
+                            
+              <table width=1200px>
+                    <center>
+                    <tbody><tr>
+                      
+                        <td width=20px align=center style="writing-mode: tb-rl;padding-right: 0px;font-size: 20px;">
+                          
+                        </td>
+                        <td width="256px">
+                                                    <audio controls style="width: 200px;">
+                               &nbsp;&nbsp; <source width="100%" height="100%" src="./assets/underwater bubbling_406.wav" type="audio/wav">
+    
+                            </audio>
+                        </td>
+                        <td width="256px">
+                          <audio controls style="width: 200px;">
+                             &nbsp;&nbsp;   <source width="100%" height="100%" src="./assets/fire crackling_134.wav" type="audio/wav">
+                            </audio>
+
+                        </td>
+                        <td width="256px">
+                        <audio controls style="width: 200px;">
+                             &nbsp;&nbsp;   <source width="100%" height="100%" src="./assets/explosion.wav" type="audio/wav">
+                            </audio>
+                        </td>
+                        </tr>
+                </table>
+
+  
+  
+<!--     <h2> Face Example </h2> -->
+  
+
+          <br><br><br>
+<!--             <div class="row">
+                <div class="col-xs-12 text-left">
+                    <h3>BibTeX</h3>
+                    <p>If you use our code or data, please cite:</p>
+                    <pre>
+                <code>
+@article{lee2022sound,
+    title={Sound-Guided Semantic Video Generation},
+    author={Lee, Seung Hyun and Oh, Gyeongrok and Byeon, Wonmin and Bae, Jihyun and Kim, Chanyoung and Ryoo, Won Jeong and Yoon, Sang Ho and Kim, Jinkyu and Kim, Sangpil},
+    journal={arXiv preprint arXiv:2204.09273},
+    year={2022}
+    }
+            </code>
+            </pre>
+            <center>
+            <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fkuai-lab.github.io%2Feccv2022sound%2F&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
+            </center>        
+        </div>
+            </div> -->
+</script>
+
+</body></html>
